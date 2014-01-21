@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
 	{{puzzle.title}}
@@ -7,7 +8,7 @@
 {% block content %}
 
 {% for answer in answers %}
-	<div class="cell">{{answer}}</div>
+	<div class="cell">{{answer}}<br /><img src="{% static "assets/img/eat1.png" %}" /></div>
 {% endfor %}
 
 {% endblock %}
