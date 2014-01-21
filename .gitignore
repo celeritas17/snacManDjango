@@ -2,5 +2,9 @@ manage.py
 *.pyc
 admin/*
 db.sqlite3
+*.jpg
+*.png
+*.jpeg
+*.gif
 
 
