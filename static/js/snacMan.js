@@ -1,7 +1,7 @@
 $(function(){
 	var cell = $('#cell_id').val();
-	var row_size = $('#row_size').val();
-	var col_size = $('#col_size').val();
+	var row_size = parseInt($('#row_size').val());
+	var col_size = parseInt($('#col_size').val());
 
 	$('#' + cell).toggle();
 
@@ -24,7 +24,7 @@ $(function(){
 	$('#right').click(function(){
 		var current_cell = parseInt(cell);
 		
-		if (current_cell%col_size == 3){
+		if (current_cell%col_size == (col_size - 1)){
 			cell = (current_cell - (col_size - 1));
 		}
 		else{
@@ -52,7 +52,7 @@ $(function(){
 			cell = (current_cell - (row_size - 1)*row_size);
 		}
 		else{
-			cell = (current_cell + 4);
+			cell = (current_cell + col_size);
 		}
 		$('#' + cell).toggle();
 	});
