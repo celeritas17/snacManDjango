@@ -21,7 +21,7 @@ body{
 }
 
 #scoreboard{
-	background-color: gray;
+	background-color: #111;
 	top:500px;
 	height:200px;
 	width:500px;
@@ -45,8 +45,8 @@ body{
 .cell{
 	width: 125px;
 	height: 125px;
-	border: 1px dotted;
-	background-color: blue;
+	background-color: #111;
+	border: 1px dotted blue;
 	position: relative;
 	float:left;
 	}
