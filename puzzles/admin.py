@@ -1,3 +1,5 @@
 from django.contrib import admin
+from puzzles.models import PuzzleCategory, Puzzle
 
-# Register your models here.
+admin.site.register(PuzzleCategory)
+admin.site.register(Puzzle)
