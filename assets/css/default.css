@@ -4,6 +4,10 @@
 
 body{
 	background-color: black;
+  font-style: bold;
+  color: #5dfc0a;
+  word-wrap: break-word;
+  font-family:"Century Gothic", Arial, "Courier New", Sans-Serif;
 }
 
 #page{
@@ -50,4 +54,5 @@ body{
 	border: 1px dotted blue;
 	position: relative;
 	float:left;
+	text-align: center;
 	}
