@@ -6,24 +6,9 @@
 
 {% block content %}
 
-
-<div class="cell"><p>Test</p></div>
-<div class="cell"></div>
-<div class="cell"></div>
-<div class="cell"></div>
-<div class="cell"></div>
-<div class="cell"></div>
-<div class="cell"></div>
-<div class="cell"></div>
-<div class="cell"></div>
-<div class="cell"></div>
-<div class="cell"></div>
-<div class="cell"></div>
-<div class="cell"></div>
-<div class="cell"></div>
-<div class="cell"></div>
-<div class="cell"></div>
-
+{% for answer in answers %}
+	<div class="cell">{{answer}}</div>
+{% endfor %}
 
 {% endblock %}
 
