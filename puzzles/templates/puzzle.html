@@ -6,11 +6,12 @@
 {% endblock %}
 
 {% block content %}
-
-{% for answer in answers %}
-	<div class="cell">{{answer}}<br /><img src="{% static "assets/img/eat1.png" %}" /></div>
-{% endfor %}
-
+	<input type="hidden" value="{{cell_id}}" id="cell_id" />
+	{% for answer in answers %}
+		<div class="cell">{{answer}}<br />
+			<img id={{forloop.counter0}} style="display:none;" src="{% static "assets/img/eat1.png" %}" />
+		</div>
+	{% endfor %}
 {% endblock %}
 
 {% block scoreboard %}	
