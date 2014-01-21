@@ -8,3 +8,31 @@
 	<link rel="stylesheet" type="text/css" href="{% static "assets/css/default.css" %}">
 	<script type="text/javascript" src="{% static "assets/js/jquery-2.0.3.min.js" %}"></script>
 </head>
+
+<body>
+
+	<div id="page">
+		<div id="content">
+			{% block content %}
+
+			{% endblock %}
+		</div>
+
+		
+			
+
+	</div>
+
+		<div id="scoreboard">
+			{% block scoreboard %}
+
+			{% endblock %}
+
+		</div>
+
+	</div>
+
+
+</body>
+
+</html>
