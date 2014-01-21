@@ -1,0 +1,48 @@
+*{
+			box-sizing: border-box;
+}
+
+#page{
+	width: 500px;
+	height: 700px;
+	text-align: left;
+	margin: 10px auto 20px auto;
+	background-color: #0c0c0c;
+}
+
+#board{
+	width: 500px;
+	height:500px;
+	background-color:black;
+}
+
+#scoreboard{
+	background-color: gray;
+	top:500px;
+	height:200px;
+	width:500px;
+}
+
+.row0{
+	
+	
+}
+
+.col0{
+
+}
+
+.col1{
+	left:20%;
+	top:0%;
+	
+}
+
+.cell{
+	width: 125px;
+	height: 125px;
+	border: 1px dotted;
+	background-color: blue;
+	position: relative;
+	float:left;
+	}
