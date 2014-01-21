@@ -27,8 +27,8 @@ class PuzzleCategory(models.Model):
 
 class Puzzle(models.Model):
 	title = models.CharField(max_length=50)
-	right_answers = models.CharField(max_length=200) 
-	wrong_answers = models.CharField(max_length=200)
+	right_answers = models.CharField(max_length=500) 
+	wrong_answers = models.CharField(max_length=500)
 	category = models.ForeignKey(PuzzleCategory)
 
 	def __unicode__(self):
