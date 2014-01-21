@@ -1,5 +1,8 @@
 $(function(){
 	var cell = $('#cell_id').val();
+	var row_size = $('#row_size').val();
+	var col_size = $('#col_size').val();
+
 	$('#' + cell).toggle();
 
 	$('.nav_button').click(function(){
@@ -9,7 +12,7 @@ $(function(){
 	$('#left').click(function(){
 		var new_cell;
 
-		//$('#' + new_cell).toggle();
+		$('#' + new_cell).toggle();
 	});
 
 	$('#right').click(function(){
