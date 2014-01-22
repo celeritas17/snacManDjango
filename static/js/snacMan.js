@@ -52,7 +52,7 @@ $(function(){
 			cell = (current_cell - (row_size - 1)*row_size);
 		}
 		else{
-			cell = (current_cell + col_size);cdj
+			cell = (current_cell + col_size);
 		}
 		$('#' + cell).toggle();
 	});
