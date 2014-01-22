@@ -50,7 +50,7 @@ body{
 	.puzzle{
 		background-color: #5dfc0a;
 		color:#111;
-		margin: 10px 5px 10px 5px;
+		margin: 10px 10px 10px 10px;
 		border-radius:10px;
 		float:left;
 		padding:5px;
@@ -82,6 +82,6 @@ body{
 	div.muncher > img{
 		width:75px;
 		height:75px;
-		margin-top:100px;
+		margin-top:50px;
 		float: left;
 	}
