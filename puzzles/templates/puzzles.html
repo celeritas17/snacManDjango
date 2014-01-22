@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Hello, World</h1>
+	<h1><em>SnacMan</em></h1>
+	{% for puzzle in puzzles %}
+		<div><a class="puzzle" href="{% url 'puzzles.views.puzzle' puzzle.id %}">{{puzzle.title}}</a></div>
+	{% endfor %}
+
+
+{% endblock %}
+
+{% block scoreboard %}
+	<h2>Hello, Again</h2>
 {% endblock %}

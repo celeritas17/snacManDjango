@@ -18,4 +18,7 @@ def puzzle(request, puzzle_id):
 	return render_to_response('puzzle.html', context)
 
 def puzzles(request):
-	return render_to_response('puzzles.html')
+	puzzles = Puzzle.objects.all()
+	context = {'puzzles': Puzzle.objects.all()}
+
+	return render_to_response('puzzles.html', context)

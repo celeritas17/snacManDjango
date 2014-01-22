@@ -15,12 +15,14 @@ body{
 	height: 700px;
 	text-align: left;
 	margin: 10px auto 20px auto;
-	background-color: gray;
+	background-color: #222;
+	border-radius: 20px;
 }
 
 #content{
 	width:500px;
 	height:500px;
+	text-align: center;
 }
 
 #scoreboard{
@@ -38,6 +40,19 @@ body{
 	border: 1px dotted blue;
 	float:left;
 	text-align: center;
+	}
+
+	.puzzle{
+		background-color: #5dfc0a;
+		color:#111;
+		margin: 10px 5px 10px 5px;
+		border-radius:10px;
+		float:left;
+		padding:5px;
+	}
+
+	a{
+		text-decoration:none;
 	}
 
 	img{
