@@ -10,7 +10,7 @@
 	<input type="hidden" value="{{row_size}}" id="row_size" />
 	<input type="hidden" value="{{col_size}}" id="col_size" />
 	{% for answer in answers %}
-		<div class="cell">{{answer}}<br />
+		<div class="cell"><span id="answer{{forloop.counter0}}">{{answer}}</span><br />
 			<img class="muncher" id={{forloop.counter0}} style="display:none;" src="{% static "assets/img/eat1.png" %}" />
 		</div>
 	{% endfor %}

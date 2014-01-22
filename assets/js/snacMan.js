@@ -58,6 +58,7 @@ $(function(){
 	});
 
 	$('#munch').click(function(){
+
 		var margin_top = parseInt($('#' + cell).css('margin-top'));
 		var chew_timeout = function(i, j){
 			setTimeout(function(){
@@ -75,6 +76,7 @@ $(function(){
 				i--;
 			chew_timeout(i, j);
 		}
+		$('#answer' + cell).html('');
 	});
 
 });
