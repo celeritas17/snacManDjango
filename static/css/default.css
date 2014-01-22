@@ -50,7 +50,7 @@ body{
 .cell{
 	width: 125px;
 	height: 125px;
-	background-color: #111;
+	background-color: #1a1a1a;
 	border: 1px dotted blue;
 	position: relative;
 	float:left;
