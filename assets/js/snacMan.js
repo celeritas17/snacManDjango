@@ -52,8 +52,30 @@ $(function(){
 			cell = (current_cell - (row_size - 1)*row_size);
 		}
 		else{
-			cell = (current_cell + col_size);
+			cell = (current_cell + col_size);cdj
 		}
 		$('#' + cell).toggle();
 	});
+
+	$('#munch').click(function(){
+		var margin_top = parseInt($('#' + cell).css('margin-top'));
+		alert(margin_top);
+		var chew_timeout = function(i, j){
+			setTimeout(function(){
+                $('#' + cell).attr('src', 'http://www.googlefacebooktwitter.com/img/eat/eat' + i +'.png'); 
+                margin_top += ((j < 5) ? -40 : 40)
+                $('.muncher').css('margin-top', margin_top + "px");
+        }, j*20);
+		}
+		var i = 1;
+		var j = 0;
+		for (; j < 10; j++){
+			if (i <= 5 && j < 5)
+				i++;
+			else
+				i--;
+			chew_timeout(i, j);
+		}
+	});
+
 });
