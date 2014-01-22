@@ -17,4 +17,5 @@ def puzzle(request, puzzle_id):
 	}
 	return render_to_response('puzzle.html', context)
 
-
+def puzzles(request):
+	pass
