@@ -7,7 +7,7 @@ body{
   font-style: bold;
   color: #5dfc0a;
   word-wrap: break-word;
-  font-family:"Century Gothic", Arial, "Courier New", Sans-Serif;
+  font-family:"Andale Mono", Terminal, Monaco, monospace;
 }
 
 #page{
@@ -44,6 +44,7 @@ body{
 	float:left;
 	text-align: center;
 	border-radius: 2px;
+	font-family: "Century Gothic", Arial, "Courier New", Sans-Serif;
 	}
 
 	.puzzle{
@@ -53,6 +54,9 @@ body{
 		border-radius:10px;
 		float:left;
 		padding:5px;
+		border-style:outset;
+		border-color:#444;
+		font-family: "Century Gothic", Arial, "Courier New", Sans-Serif;
 	}
 
 	a{
@@ -73,4 +77,11 @@ body{
 		width:50px;
 		height:50px;
 		margin-top:15px;
+	}
+
+	div.muncher > img{
+		width:75px;
+		height:75px;
+		margin-top:100px;
+		float: left;
 	}
