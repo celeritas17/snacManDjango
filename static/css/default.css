@@ -18,33 +18,11 @@ body{
 	background-color: gray;
 }
 
-#board{
-	width: 500px;
-	height:500px;
-	background-color:black;
-}
-
 #scoreboard{
-	background-color: #111;
 	top:500px;
 	height:200px;
 	width:500px;
 	text-align:center;
-}
-
-.row0{
-	
-	
-}
-
-.col0{
-
-}
-
-.col1{
-	left:20%;
-	top:0%;
-	
 }
 
 .cell{
