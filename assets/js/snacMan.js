@@ -59,7 +59,6 @@ $(function(){
 
 	$('#munch').click(function(){
 		var margin_top = parseInt($('#' + cell).css('margin-top'));
-		alert(margin_top);
 		var chew_timeout = function(i, j){
 			setTimeout(function(){
                 $('#' + cell).attr('src', 'http://www.googlefacebooktwitter.com/img/eat/eat' + i +'.png'); 
