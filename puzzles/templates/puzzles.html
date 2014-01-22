@@ -5,8 +5,8 @@
 	{% for puzzle in puzzles %}
 		<div><a class="puzzle" href="{% url 'puzzles.views.puzzle' puzzle.id %}">{{puzzle.title}}</a></div>
 	{% endfor %}
-
-
+	
+	<a href="#" class="puzzle more">More</a>
 {% endblock %}
 
 {% block scoreboard %}
