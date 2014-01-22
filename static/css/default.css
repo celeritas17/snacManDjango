@@ -31,6 +31,7 @@ body{
 	width:500px;
 	text-align:center;
 	background-color: #111;
+	border-radius: 20px;
 }
 
 .cell{
@@ -40,6 +41,7 @@ body{
 	border: 1px dotted blue;
 	float:left;
 	text-align: center;
+	border-radius: 5px;
 	}
 
 	.puzzle{
