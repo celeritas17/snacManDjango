@@ -18,11 +18,17 @@ body{
 	background-color: gray;
 }
 
+#content{
+	width:500px;
+	height:500px;
+}
+
 #scoreboard{
-	top:500px;
+	float:left;
 	height:200px;
 	width:500px;
 	text-align:center;
+	background-color: #111;
 }
 
 .cell{
@@ -30,7 +36,6 @@ body{
 	height: 125px;
 	background-color: #222;
 	border: 1px dotted blue;
-	position: relative;
 	float:left;
 	text-align: center;
 	}
