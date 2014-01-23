@@ -4,13 +4,17 @@
 {% block content %}
 	<h1><em>Start Snacking!</em></h1>
 	{% for puzzle in puzzles %}
-		<div><a class="puzzle" href="{% url 'puzzles.views.puzzle' puzzle.id %}"><em>{{puzzle.title}}</em><br /><small class="category">->{{puzzle.category.category_name}}</small></a></div>
+		<div>
+			<a class="puzzle" href="{% url 'puzzles.views.puzzle' puzzle.id %}"><em>{{puzzle.title}}</em><br />
+				<small class="category">{{puzzle.category.category_name}}</small>
+			</a>
+		</div>
 	{% endfor %}
 	
-	<a href="#" class="puzzle more">&gt;&gt;More</a>
-	<div class="muncher"><img src="{% static "assets/img/eat1.png" %}" /></div>
+	<a href="#" class="puzzle more"><h4>More Puzzles &gt;&gt;</h4></a>
 {% endblock %}
 
 {% block scoreboard %}
 	<h1><em>SnacMan</em></h1>
+	<div class="muncher"><img src="{% static "assets/img/eat1.png" %}" /></div>
 {% endblock %}
