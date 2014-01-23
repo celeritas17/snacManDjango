@@ -4,11 +4,9 @@
 {% block content %}
 	<h1><em>Start Snacking!</em></h1>
 	{% for puzzle in puzzles %}
-		<div>
 			<a class="puzzle" href="{% url 'puzzles.views.puzzle' puzzle.id %}"><em>{{puzzle.title}}</em><br />
 				<small class="category">{{puzzle.category.category_name}}</small>
 			</a>
-		</div>
 	{% endfor %}
 	<a href="#" class="puzzle more"><h4>More Puzzles &gt;&gt;</h4></a>
 {% endblock %}
