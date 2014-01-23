@@ -4,7 +4,8 @@
 	{% if form.errors %}
 		<p class="error">Sorry, that's not a valid username or password</p>
 	{% endif %}
-
+	<h1>Login</h1>
+	<div class="login">
 	<form action="{% url 'snacMan.views.auth_view' %}" method="post">{% csrf_token %}
 		<label for="username">Username:</label>
 		<input type="text" name="username" value="" id="username">
@@ -15,6 +16,6 @@
 
 	</form>
 
-
+</div>
 
 {% endblock %}
