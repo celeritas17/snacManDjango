@@ -2,7 +2,6 @@ from django.shortcuts import render, render_to_response
 from puzzles.models import PuzzleCategory, Puzzle
 from random import shuffle
 from django.core.context_processors import csrf
-from django.contrib import auth
 from django.http import HttpResponseRedirect
 
 def puzzle(request, puzzle_id):
