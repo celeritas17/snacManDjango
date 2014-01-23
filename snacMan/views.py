@@ -1,7 +1,8 @@
 from django.core.context_processors import csrf
 from django.shortcuts import render, render_to_response
 from django.contrib import auth
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
+from forms import SnacManRegistrationForm
 
 def main(request):
 	return render_to_response('main.html')
@@ -22,8 +23,25 @@ def auth_view(request):
 	else:
 		return HttpResponseRedirect('/login')
 
-def signup(request):
-	pass
-
 def register(request):
-	pass
+	if request.method == 'POST':
+		form = SnacManRegistrationForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect('/register_success')
+		else:
+			return HttpResponseRedirect('/register_fail')
+
+	context = {}
+	context.update(csrf(request))
+	#print context
+	context['form'] = SnacManRegistrationForm()
+
+	return render_to_response('register.html', context)
+
+def register_success(request):
+	return HttpResponse("success")
+
+def register_fail(request):
+	return HttpResponse("Failed")
+
