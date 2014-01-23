@@ -22,3 +22,14 @@ def puzzles(request):
 
 def main(request):
 	return render_to_response('main.html')
+
+def signup(request):
+	pass
+
+def login(request):
+	pass
+
+def register(request):
+	pass
+
+

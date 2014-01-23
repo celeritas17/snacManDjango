@@ -97,3 +97,33 @@ body{
 		height:75px;
 		float: left;
 	}
+
+	.buttons{
+		margin:150px auto 100px auto;
+		width:330px;
+		height:300px;
+	}
+
+	div.buttons > div{
+		width:100px;
+		height:100px;
+		background-color:#5dfc0a;
+		border-style:outset;
+		border-color: #444;
+		border-radius:10px;
+		color:#111;
+	}
+
+	#register{
+		float:left;
+		margin-right:10px;
+	}
+	
+	#play{
+		float:left;
+		margin-left:5px;
+	}
+
+	#login{
+		float:right;
+	}
