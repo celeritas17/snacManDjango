@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+	
+{% block content %}
+
+	<h1>Invalid Registration</h1>
+	<h2>Mistakes were made</h2>
+	<h3>Make sure you fill out all required fields</h3>
+	<h2>Click <a class="snacking" href="{% url 'snacMan.views.register' %}">here</a> to try again.</h2>
+
+{% endblock %}
