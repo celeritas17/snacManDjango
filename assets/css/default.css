@@ -62,8 +62,9 @@ body{
 		position:relative;
 	}
 
-	a{
+	a, a:visited, a:active{
 		text-decoration:none;
+		color: #111;
 	}
 
 	.more{
@@ -104,7 +105,7 @@ body{
 		height:300px;
 	}
 
-	div.buttons > div, div.buttons > a:active, div.buttons > a:visited{
+	div.buttons > div{
 		width:100px;
 		height:100px;
 		background-color:#5dfc0a;
