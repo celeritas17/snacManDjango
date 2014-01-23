@@ -1,6 +1,9 @@
 from django.shortcuts import render, render_to_response
 from puzzles.models import PuzzleCategory, Puzzle
 from random import shuffle
+from django.core.context_processors import csrf
+from django.contrib import auth
+from django.http import HttpResponseRedirect
 
 def puzzle(request, puzzle_id):
 	p = Puzzle.objects.get(id=puzzle_id)
@@ -27,9 +30,23 @@ def signup(request):
 	pass
 
 def login(request):
-	pass
+	context = {}	
+	context.update(csrf(request))
+	return render_to_response('login.html', context)
 
 def register(request):
 	pass
+
+def auth_view(request):
+	username = request.POST.get('username', '')
+	password = request.POST.get('password', '')
+	user = auth.authenticate(username=username, password=password)
+
+	if user is not None:
+		auth.login(request, user)
+		return HttpResponseRedirect('/puzzles/all')
+	else:
+		return HttpResponseRedirect('/puzzles/login')
+
 
 
