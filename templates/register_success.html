@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h1>You're Signed Up</h1>
+
+	<h2>Now you can track and save your progress.</h2>
+
+	<div class="snacking">
+		<h1>Now Start <a class="snacking" href="{% url 'puzzles.views.puzzles' %}"><em>Snacking!</em></a></h1>
+	</div>
+{% endblock %}

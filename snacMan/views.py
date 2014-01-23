@@ -40,7 +40,7 @@ def register(request):
 	return render_to_response('register.html', context)
 
 def register_success(request):
-	return HttpResponse("success")
+	return render_to_response('register_success.html')
 
 def register_fail(request):
 	return HttpResponse("Failed")
