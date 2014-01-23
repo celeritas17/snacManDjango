@@ -23,30 +23,9 @@ def puzzles(request):
 
 	return render_to_response('puzzles.html', context)
 
-def main(request):
-	return render_to_response('main.html')
 
-def signup(request):
-	pass
 
-def login(request):
-	context = {}	
-	context.update(csrf(request))
-	return render_to_response('login.html', context)
 
-def register(request):
-	pass
-
-def auth_view(request):
-	username = request.POST.get('username', '')
-	password = request.POST.get('password', '')
-	user = auth.authenticate(username=username, password=password)
-
-	if user is not None:
-		auth.login(request, user)
-		return HttpResponseRedirect('/puzzles/all')
-	else:
-		return HttpResponseRedirect('/puzzles/login')
 
 
 

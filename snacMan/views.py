@@ -20,7 +20,7 @@ def auth_view(request):
 		auth.login(request, user)
 		return HttpResponseRedirect('/puzzles/all')
 	else:
-		return HttpResponseRedirect('/puzzles/login')
+		return HttpResponseRedirect('/login')
 
 def signup(request):
 	pass
