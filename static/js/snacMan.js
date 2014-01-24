@@ -9,6 +9,7 @@ $(function(){
 		$('#' + cell).toggle();
 	});
 
+	// Chew animation function
 	var munch = function(){
 		var margin_top = parseInt($('#' + cell).css('margin-top'));
 		var chew_timeout = function(i, j){
@@ -30,6 +31,8 @@ $(function(){
 		$('#answer' + cell).html('');
 	}
 
+	/* functions for moving the muncher: */
+	/////////////////
 	var move_left = function(){
 		var current_cell = parseInt(cell);
 		
@@ -77,11 +80,14 @@ $(function(){
 		}
 		$('#' + cell).toggle();
 	}
+	/////////////////
 
+	/* Click Handlers for muncher navigation buttons: */
+	//////
 	$('#left').click(move_left);
 	$('#right').click(move_right);
 	$('#up').click(move_up);
 	$('#down').click(move_down);
 	$('#munch').click(munch);
-
+	//////
 });
