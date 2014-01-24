@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class PuzzleCategory(models.Model):
 	CATEGORY_NAMES = [('sports', 'Sports'), 
@@ -33,3 +34,10 @@ class Puzzle(models.Model):
 
 	def __unicode__(self):
 		return self.title
+
+class PuzzleAttempt(models.Model):
+	puzzle = models.ForeignKey(Puzzle)
+	success = models.BooleanField(default=False)
+	attempt_date = models.DateTimeField('date attempted')
+	user = models.ForeignKey(User)
+
