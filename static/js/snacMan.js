@@ -30,7 +30,7 @@ $(function(){
 		$('#answer' + cell).html('');
 	}
 
-	$('#left').click(function(){
+	var move_left = function(){
 		var current_cell = parseInt(cell);
 		
 		if (current_cell%row_size == 0){
@@ -40,9 +40,9 @@ $(function(){
 			cell = (current_cell - 1);
 		}
 		$('#' + cell).toggle();
-	});
+	}
 
-	$('#right').click(function(){
+	var move_right = function(){
 		var current_cell = parseInt(cell);
 		
 		if (current_cell%col_size == (col_size - 1)){
@@ -52,9 +52,9 @@ $(function(){
 			cell = (current_cell + 1);
 		}
 		$('#' + cell).toggle();
-	});
+	}
 
-	$('#up').click(function(){
+	var move_up = function(){
 		var current_cell = parseInt(cell);
 		
 		if (current_cell < row_size){
@@ -64,9 +64,9 @@ $(function(){
 			cell = (current_cell - row_size);
 		}
 		$('#' + cell).toggle();
-	});
+	}
 
-	$('#down').click(function(){
+	var move_down = function(){
 		var current_cell = parseInt(cell);
 		
 		if (current_cell >= (row_size - 1)*row_size){
@@ -76,8 +76,12 @@ $(function(){
 			cell = (current_cell + col_size);
 		}
 		$('#' + cell).toggle();
-	});
+	}
 
+	$('#left').click(move_left);
+	$('#right').click(move_right);
+	$('#up').click(move_up);
+	$('#down').click(move_down);
 	$('#munch').click(munch);
 
 });
