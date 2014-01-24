@@ -109,6 +109,9 @@ $(function(){
 			case 40:
 				move_down();
 				break;
+			case 13:
+				munch();
+				break;
 			default:
 				break;
 		}
