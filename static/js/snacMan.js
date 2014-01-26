@@ -118,6 +118,7 @@ $(function(){
 		switch (event.which){
 			case 37:
 				move_left("cell", cell);
+				move_bad_guy();
 				break;
 			case 38:
 				move_up("cell", cell);
@@ -138,8 +139,11 @@ $(function(){
 	/////////////////
 
 	var move_bad_guy = function(){
-		var current_cell = parseInt(bad_cell);
-
+		var moves = [move_left, move_right, move_up, move_down];
+		$('#' + bad_cell + "bad").toggle();
+		moves[Math.floor(Math.random()*4)]("bad_cell", bad_cell);
 	};
+
+	var bad_moves = setInterval(move_bad_guy, 1000);
 
 });
