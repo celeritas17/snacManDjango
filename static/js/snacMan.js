@@ -31,7 +31,7 @@ $(function(){
 			chew_timeout(i, j);
 		}
 		$('#answer' + cell).html('');
-	}
+	};
 
 	/* functions for moving the muncher: */
 	/////////////////
@@ -45,7 +45,7 @@ $(function(){
 			cell = (current_cell - 1);
 		}
 		$('#' + cell).toggle();
-	}
+	};
 
 	var move_right = function(){
 		var current_cell = parseInt(cell);
@@ -57,7 +57,7 @@ $(function(){
 			cell = (current_cell + 1);
 		}
 		$('#' + cell).toggle();
-	}
+	};
 
 	var move_up = function(){
 		var current_cell = parseInt(cell);
@@ -69,7 +69,7 @@ $(function(){
 			cell = (current_cell - row_size);
 		}
 		$('#' + cell).toggle();
-	}
+	};
 
 	var move_down = function(){
 		var current_cell = parseInt(cell);
@@ -81,7 +81,7 @@ $(function(){
 			cell = (current_cell + col_size);
 		}
 		$('#' + cell).toggle();
-	}
+	};
 	/////////////////
 
 	/* Event Handlers for muncher navigation buttons: */
