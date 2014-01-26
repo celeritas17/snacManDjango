@@ -39,7 +39,7 @@ body{
 .cell{
 	width: 125px;
 	height: 125px;
-	background-color: #222;
+	background-color: black;
 	border: 1px dotted blue;
 	float:left;
 	text-align: center;

@@ -1,9 +1,14 @@
 $(function(){
+	// These are taken from hidden inputs on puzzle template:
+	/////////////////
 	var cell = $('#cell_id').val(); // numeric id for the muncher on the board.
+	var bad_cell = $('#bad_guy_id').val(); // id for bad guy on the board.
 	var row_size = parseInt($('#row_size').val()); 
 	var col_size = parseInt($('#col_size').val());
+	/////////////////
 
 	$('#' + cell).toggle(); // Make sure muncher image is visible on starting square.
+	$('#' + bad_cell + "bad").toggle(); // Make bad buy visible on starting square.
 
 	// Make muncher image invisible on current square before the .nav_button callback
 	// makes the muncher image on another square visible.
@@ -33,63 +38,75 @@ $(function(){
 		$('#answer' + cell).html('');
 	};
 
-	/* functions for moving the muncher: */
+	/* functions for moving the muncher and bad_guy: */
 	/////////////////
-	var move_left = function(){
-		var current_cell = parseInt(cell);
+
+	var toggle_picture = function(id, cell_id){
+		if (id == "cell"){
+			cell = cell_id;
+			$('#' + cell).toggle();
+		}
+		else{
+			bad_cell = cell_id;
+			$('#' + bad_cell + "bad").toggle();
+		}
+	}
+
+	var move_left = function(id, cell_id){
+		var current_cell = parseInt(cell_id);
 		
 		if (current_cell%row_size == 0){
-			cell = (current_cell + (row_size - 1));
+			cell_id = (current_cell + (row_size - 1));
 		}
 		else{
-			cell = (current_cell - 1);
+			cell_id = (current_cell - 1);
 		}
-		$('#' + cell).toggle();
+		toggle_picture(id, cell_id);
 	};
 
-	var move_right = function(){
-		var current_cell = parseInt(cell);
+	var move_right = function(id, cell_id){
+		var current_cell = parseInt(cell_id);
 		
 		if (current_cell%col_size == (col_size - 1)){
-			cell = (current_cell - (col_size - 1));
+			cell_id = (current_cell - (col_size - 1));
 		}
 		else{
-			cell = (current_cell + 1);
+			cell_id = (current_cell + 1);
 		}
-		$('#' + cell).toggle();
+		toggle_picture(id, cell_id);
 	};
 
-	var move_up = function(){
-		var current_cell = parseInt(cell);
+	var move_up = function(id, cell_id){
+		var current_cell = parseInt(cell_id);
 		
 		if (current_cell < row_size){
-			cell = (current_cell + (row_size - 1)*row_size);
+			cell_id = (current_cell + (row_size - 1)*row_size);
 		}
 		else{
-			cell = (current_cell - row_size);
+			cell_id = (current_cell - row_size);
 		}
-		$('#' + cell).toggle();
+		toggle_picture(id, cell_id);
 	};
 
-	var move_down = function(){
-		var current_cell = parseInt(cell);
+	var move_down = function(id, cell_id){
+		var current_cell = parseInt(cell_id);
 		
 		if (current_cell >= (row_size - 1)*row_size){
-			cell = (current_cell - (row_size - 1)*row_size);
+			cell_id = (current_cell - (row_size - 1)*row_size);
 		}
 		else{
-			cell = (current_cell + col_size);
+			cell_id = (current_cell + col_size);
 		}
-		$('#' + cell).toggle();
+		toggle_picture(id, cell_id);
 	};
 	/////////////////
 
 	/* Event Handlers for muncher navigation buttons: */
 	/////////////////
-	$('#left').click(move_left);
-	$('#right').click(move_right);
-	$('#up').click(move_up);
-	$('#down').click(move_down);
+	$('#left').click(function(){move_left("cell", cell)});
+	$('#right').click(function(){move_right("cell", cell)});
+	$('#up').click(function(){move_up("cell", cell)});
+	$('#down').click(function(){move_down("cell", cell)});
 	$('#munch').click(munch);
 	/////////////////
 
@@ -100,16 +117,16 @@ $(function(){
 			$('#' + cell).toggle();
 		switch (event.which){
 			case 37:
-				move_left();
+				move_left("cell", cell);
 				break;
 			case 38:
-				move_up();
+				move_up("cell", cell);
 				break;
 			case 39:
-				move_right();
+				move_right("cell", cell);
 				break;
 			case 40:
-				move_down();
+				move_down("cell", cell);
 				break;
 			case 13:
 				munch();
@@ -119,4 +136,10 @@ $(function(){
 		}
 	});
 	/////////////////
+
+	var move_bad_guy = function(){
+		var current_cell = parseInt(bad_cell);
+
+	};
+
 });
