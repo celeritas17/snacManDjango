@@ -1,10 +1,12 @@
 $(function(){
-	var cell = $('#cell_id').val();
-	var row_size = parseInt($('#row_size').val());
+	var cell = $('#cell_id').val(); // numeric id for the muncher on the board.
+	var row_size = parseInt($('#row_size').val()); 
 	var col_size = parseInt($('#col_size').val());
 
-	$('#' + cell).toggle();
+	$('#' + cell).toggle(); // Make sure muncher image is visible on starting square.
 
+	// Make muncher image invisible on current square before the .nav_button callback
+	// makes the muncher image on another square visible.
 	$('.nav_button').click(function(){
 		$('#' + cell).toggle();
 	});
