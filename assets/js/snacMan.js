@@ -118,7 +118,6 @@ $(function(){
 		switch (event.which){
 			case 37:
 				move_left("cell", cell);
-				move_bad_guy();
 				break;
 			case 38:
 				move_up("cell", cell);
