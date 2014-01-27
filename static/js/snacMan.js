@@ -9,6 +9,7 @@ $(function(){
 	var wrong_answers = $('#wrong_answers').val().split(' ');
 	/////////////////
 
+	var munched_correct = 0;
 	var num_correct = right_answers.length;
 	var corrects = {};
 	for (var i = 0; i < num_correct; i++){
@@ -25,11 +26,13 @@ $(function(){
 	});
 
 	// Check if answer in the column is a key in the corrects object;
-	// change progress bar if it is.
+	// if it is, change progress bar and update num_to_win div.
 	var check_answer = function(cell){
 		if ($('#answer' + cell).html() in corrects){
+			munched_correct++;
 			var height = parseInt($('#progress_bar').css('height'));
-			$('#progress_bar').css('height', (height + 20) + "px")
+			$('#progress_bar').css('height', (height + 20) + "px");
+			$('#num_to_win').html((num_correct - munched_correct) + " to Win");
 		}
 	};
 
@@ -39,8 +42,8 @@ $(function(){
 
 		var chew_timeout = function(i, j){
 			setTimeout(function(){
-                $('#' + cell).attr('src', 'http://www.googlefacebooktwitter.com/img/eat/eat' + i +'.png'); 
-                margin_top += ((j < 5) ? -40 : 40)
+                $('#' + cell).attr('src', 'http://www.googlefacebooktwitter.com/img/eat/eat' + i + '.png'); 
+                margin_top += ((j < 5) ? -40 : 40);
                 $('.muncher').css('margin-top', margin_top + "px");
         }, j*20);
 		}
