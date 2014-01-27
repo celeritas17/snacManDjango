@@ -140,5 +140,48 @@ body{
 
 	a.snacking{
 		color:blue;
-		marin:0px;
+		margin:0px;
+	}
+
+	#progress{
+		height:125px;
+		width:100px;
+		position:relative;
+	}
+	
+	#progress_bar{
+		float:left;
+		width:40px;
+		height:0px;
+		background-color:#5dfc0a;
+		margin: 0px 5px 20px 17px;
+		border-radius: 2px;
+		position:absolute;
+		bottom:0;
+	}
+
+	#num_to_win{
+		color:#111;
+		height:17px;
+		width:75px;
+		border-radius:10px;
+		background-color: #5dfc0a;
+		font-family: Arial, Monaco, monospace;
+		float:left;
+		position:absolute;
+		bottom:0;
+	}
+
+	.nav_button, .munch_button{
+		float:left;
+		width:60px;
+		height:20px;
+		margin:10px;
+		background-color: #5dfc0a;
+		border-radius: 10px;
+		color:#111;
+	}
+
+	#munch{
+		float:right;
 	}

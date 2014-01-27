@@ -24,9 +24,19 @@ $(function(){
 		$('#' + cell).toggle();
 	});
 
+	// Check if answer in the column is a key in the corrects object;
+	// change progress bar if it is.
+	var check_answer = function(cell){
+		if ($('#answer' + cell).html() in corrects){
+			var height = parseInt($('#progress_bar').css('height'));
+			$('#progress_bar').css('height', (height + 20) + "px")
+		}
+	};
+
 	// munch (chewing) animation function
 	var munch = function(){
 		var margin_top = parseInt($('#' + cell).css('margin-top'));
+
 		var chew_timeout = function(i, j){
 			setTimeout(function(){
                 $('#' + cell).attr('src', 'http://www.googlefacebooktwitter.com/img/eat/eat' + i +'.png'); 
@@ -137,6 +147,7 @@ $(function(){
 				move_down("cell", cell);
 				break;
 			case 13:
+				check_answer(cell); // Needs to be executed before munch
 				munch();
 				break;
 			default:

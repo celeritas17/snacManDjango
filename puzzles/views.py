@@ -14,6 +14,7 @@ def puzzle(request, puzzle_id):
 						 'col_size': 4,
 						 'cell_id': 0, # starting cell for muncher; cells range from 0 to row_size*col_size
 						 'bad_guy_id': 15, # starting cell for bad buy
+						 'num_correct': 8, # number of correct answers on the board
 	}
 	return render_to_response('puzzle.html', context)
 

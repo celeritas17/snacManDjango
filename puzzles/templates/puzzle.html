@@ -23,10 +23,11 @@
 
 {% block scoreboard %}	
 		<h2><em>{{puzzle.title}}</em></h2>
-		<button class="nav_button" id="left">Left</button>
-		<button class="nav_button" id="right">Right</button>
-		<button class="nav_button" id="up">Up</button>
-		<button class="nav_button" id="down">Down</button>
-		<button id="munch">Munch!</button>
+		
+		<div id="progress">
+			<div id="progress_bar"></div>
+			<div id="num_to_win">{{num_correct}} to Win</div>
+		</div>
+		
 {% endblock %}
 
