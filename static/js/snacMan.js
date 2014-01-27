@@ -9,6 +9,12 @@ $(function(){
 	var wrong_answers = $('#wrong_answers').val().split(' ');
 	/////////////////
 
+	var num_correct = right_answers.length;
+	var corrects = {};
+	for (var i = 0; i < num_correct; i++){
+		corrects[right_answers[i].split('_').join(' ')] = 1;
+	}
+
 	$('#' + cell).toggle(); // Make sure muncher image is visible on starting square.
 	$('#' + bad_cell + "bad").toggle(); // Make bad buy visible on starting square.
 
