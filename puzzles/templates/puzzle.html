@@ -10,6 +10,8 @@
 	<input type="hidden" value="{{cell_id}}" id="cell_id" />
 	<input type="hidden" value="{{row_size}}" id="row_size" />
 	<input type="hidden" value="{{col_size}}" id="col_size" />
+	<input type="hidden" value="{{puzzle.right_answers}}" id="right_answers" />
+	<input type="hidden" value="{{puzzle.wrong_answers}}" id="wrong_answers" />
 
 	{% for answer in answers %}
 		<div class="cell"><span id="answer{{forloop.counter0}}">{{answer}}</span><br />

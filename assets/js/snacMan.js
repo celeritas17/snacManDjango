@@ -5,6 +5,8 @@ $(function(){
 	var bad_cell = $('#bad_guy_id').val(); // id for bad guy on the board.
 	var row_size = parseInt($('#row_size').val()); 
 	var col_size = parseInt($('#col_size').val());
+	var right_answers = $('#right_answers').val().split(' ');
+	var wrong_answers = $('#wrong_answers').val().split(' ');
 	/////////////////
 
 	$('#' + cell).toggle(); // Make sure muncher image is visible on starting square.
