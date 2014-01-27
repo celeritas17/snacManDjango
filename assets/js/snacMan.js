@@ -68,7 +68,7 @@ $(function(){
 			bad_cell = cell_id;
 			$('#' + bad_cell + "bad").toggle();
 		}
-	}
+	};
 
 	var move_left = function(id, cell_id){
 		var current_cell = parseInt(cell_id);
