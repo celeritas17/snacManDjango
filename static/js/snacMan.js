@@ -64,14 +64,14 @@ $(function(){
 	// 'Die' flashing animation function
 	var die = function(){
 		dieing = true;
-		$('#' + cell).toggle();
-		$('#' + bad_cell + 'bad').toggle();
+		toggle_picture("cell", cell);
+		toggle_picture("bad_cell", bad_cell);
 		cell = 0;
 		bad_cell = row_size*col_size - 1;
-		$('#' + bad_cell + 'bad').toggle();
+		toggle_picture("bad_cell", bad_cell);
 		var die_timeout = function(i){
 			setTimeout(function(){
-				$('#' + cell).toggle();
+				toggle_picture("cell", cell);
 			}, i*100);
 		};
 		setTimeout(function(){
@@ -95,7 +95,7 @@ $(function(){
 			cell = cell_id;
 			$('#' + cell).toggle();
 		}
-		else{
+		else if (id == "bad_cell"){
 			bad_cell = cell_id;
 			$('#' + bad_cell + "bad").toggle();
 		}
