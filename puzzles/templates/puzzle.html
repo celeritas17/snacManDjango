@@ -5,6 +5,10 @@
 	{{puzzle.title}}
 {% endblock %}
 
+{% block styles %}
+	<link rel="stylesheet" type="text/css" href="{% static "assets/css/puzzle.css" %}">
+{% endblock %}
+
 {% block content %}
 	<input type="hidden" value="{{bad_guy_id}}" id="bad_guy_id" />
 	<input type="hidden" value="{{cell_id}}" id="cell_id" />

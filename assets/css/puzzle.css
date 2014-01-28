@@ -1,0 +1,59 @@
+#progress{
+		height:125px;
+		width:100px;
+		position:relative;
+		float:left;
+	}
+	
+#progress_bar{
+	float:left;
+	width:40px;
+	height:0px;
+	background-color:#5dfc0a;
+	margin: 0px 5px 20px 17px;
+	border-radius: 2px;
+	position:absolute;
+	bottom:0;
+}
+
+#num_to_win{
+	color:#111;
+	height:17px;
+	width:75px;
+	border-radius:10px;
+	background-color: #5dfc0a;
+	font-family: Arial, Monaco, monospace;
+	float:left;
+	position:absolute;
+	bottom:0;
+}
+
+.nav_button, .munch_button{
+	float:left;
+	width:60px;
+	height:20px;
+	margin:10px;
+	background-color: #5dfc0a;
+	border-radius: 10px;
+	color:#111;
+}
+
+#munch{
+	float:right;
+}
+
+#lives, #prizes{
+	margin:auto;
+	width:275px;
+	height:60px;
+	float:left;
+}
+
+#prizes{
+	margin-bottom: 10px;
+}
+
+.life{
+	float:left;
+	margin:10px 10px 10px 30px;
+}
