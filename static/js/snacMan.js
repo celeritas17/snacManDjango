@@ -170,8 +170,10 @@ $(function(){
 	};
 
 	var bad_moves = setInterval(function(){
-		move_bad_guy();
-		collision_check();
+		if (!dieing){
+			move_bad_guy();
+			collision_check();
+		}
 	}, 1000);
 	/////////////////
 
