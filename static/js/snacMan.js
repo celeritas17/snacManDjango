@@ -122,6 +122,30 @@ $(function(){
 	};
 	/////////////////
 
+	/* Functions for moving bad guy and handling collisions: */
+	/////////////////
+	var move_bad_guy = function(){
+		var moves = [move_left, move_right, move_up, move_down];
+		$('#' + bad_cell + "bad").toggle();
+		moves[Math.floor(Math.random()*4)]("bad_cell", bad_cell);
+	};
+
+	var collision = function(){
+		return (cell == bad_cell)
+	};
+
+	var collision_check = function(){
+		if (collision()){
+			alert("Hit!");
+		}
+	};
+
+	var bad_moves = setInterval(function(){
+		move_bad_guy();
+		collision_check();
+	}, 1000);
+	/////////////////
+
 	/* Event Handlers for muncher navigation buttons: */
 	/////////////////
 	$('#left').click(function(){move_left("cell", cell)});
@@ -134,8 +158,9 @@ $(function(){
 	/* Event handlers for keypresses: */
 	/////////////////
 	$(document).on('keydown', function(event){
-		if (event.which >= 37 && event.which <= 40)
+		if (event.which >= 37 && event.which <= 40){
 			$('#' + cell).toggle();
+		}
 		switch (event.which){
 			case 37:
 				move_left("cell", cell);
@@ -156,15 +181,8 @@ $(function(){
 			default:
 				break;
 		}
+		collision_check();
 	});
 	/////////////////
-
-	var move_bad_guy = function(){
-		var moves = [move_left, move_right, move_up, move_down];
-		$('#' + bad_cell + "bad").toggle();
-		moves[Math.floor(Math.random()*4)]("bad_cell", bad_cell);
-	};
-
-	var bad_moves = setInterval(move_bad_guy, 1000);
 
 });
