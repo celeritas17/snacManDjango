@@ -10,6 +10,8 @@ $(function(){
 	/////////////////
 
 	var munched_correct = 0;
+	var num_lives = 3;
+	var dieing = false;
 	var num_correct = right_answers.length;
 	var corrects = {};
 	for (var i = 0; i < num_correct; i++){
@@ -46,7 +48,7 @@ $(function(){
                 margin_top += ((j < 5) ? -40 : 40);
                 $('.muncher').css('margin-top', margin_top + "px");
         }, j*20);
-		}
+		};
 		var i = 1;
 		var j = 0;
 		for (; j < 10; j++){
@@ -57,6 +59,32 @@ $(function(){
 			chew_timeout(i, j);
 		}
 		$('#answer' + cell).html('');
+	};
+	
+	// 'Die' flashing animation function
+	var die = function(){
+		dieing = true;
+		$('#' + cell).toggle();
+		$('#' + bad_cell + 'bad').toggle();
+		cell = 0;
+		bad_cell = row_size*col_size - 1;
+		$('#' + bad_cell + 'bad').toggle();
+		var die_timeout = function(i){
+			setTimeout(function(){
+				$('#' + cell).toggle();
+			}, i*100);
+		};
+		setTimeout(function(){
+			dieing = false;
+		}, 1000)
+		for (var i = 0; i < 11; i++){
+			die_timeout(i);
+		}
+	};
+ 
+	// Decrement num_lives and toggle one of the lives images
+	var take_life = function(){
+		$('#life' + num_lives--).toggle();
 	};
 
 	/* functions for moving the muncher and bad_guy: */
@@ -135,8 +163,9 @@ $(function(){
 	};
 
 	var collision_check = function(){
-		if (collision()){
-			alert("Hit!");
+		if (collision() && !dieing){
+			take_life();
+			die();
 		}
 	};
 
@@ -158,30 +187,32 @@ $(function(){
 	/* Event handlers for keypresses: */
 	/////////////////
 	$(document).on('keydown', function(event){
-		if (event.which >= 37 && event.which <= 40){
-			$('#' + cell).toggle();
+		if (!dieing){
+			if (event.which >= 37 && event.which <= 40){
+				$('#' + cell).toggle();
+			}
+			switch (event.which){
+				case 37:
+					move_left("cell", cell);
+					break;
+				case 38:
+					move_up("cell", cell);
+					break;
+				case 39:
+					move_right("cell", cell);
+					break;
+				case 40:
+					move_down("cell", cell);
+					break;
+				case 13:
+					check_answer(cell); // Needs to be executed before munch
+					munch();
+					break;
+				default:
+					break;
+			}
+			collision_check();
 		}
-		switch (event.which){
-			case 37:
-				move_left("cell", cell);
-				break;
-			case 38:
-				move_up("cell", cell);
-				break;
-			case 39:
-				move_right("cell", cell);
-				break;
-			case 40:
-				move_down("cell", cell);
-				break;
-			case 13:
-				check_answer(cell); // Needs to be executed before munch
-				munch();
-				break;
-			default:
-				break;
-		}
-		collision_check();
 	});
 	/////////////////
 

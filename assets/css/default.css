@@ -147,6 +147,7 @@ body{
 		height:125px;
 		width:100px;
 		position:relative;
+		float:left;
 	}
 	
 	#progress_bar{
@@ -184,4 +185,17 @@ body{
 
 	#munch{
 		float:right;
+	}
+
+	#lives{
+		margin:auto;
+		position:relative;
+		width:275px;
+		height:125px;
+		float:left;
+	}
+
+	.life{
+		float:left;
+		margin:10px 10px 10px 30px;
 	}
