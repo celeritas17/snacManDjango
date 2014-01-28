@@ -66,17 +66,23 @@ $(function(){
 		dieing = true;
 		toggle_picture("cell", cell);
 		toggle_picture("bad_cell", bad_cell);
+		
+		// Reset positions for bad guy and good guy
 		cell = 0;
 		bad_cell = row_size*col_size - 1;
+		
 		toggle_picture("bad_cell", bad_cell);
+		
 		var die_timeout = function(i){
 			setTimeout(function(){
 				toggle_picture("cell", cell);
 			}, i*100);
 		};
+		
 		setTimeout(function(){
 			dieing = false;
-		}, 1000)
+		}, 1000);
+
 		for (var i = 0; i < 11; i++){
 			die_timeout(i);
 		}

@@ -187,15 +187,19 @@ body{
 		float:right;
 	}
 
-	#lives{
+	#lives, #prizes{
 		margin:auto;
-		position:relative;
 		width:275px;
-		height:125px;
+		height:60px;
 		float:left;
+	}
+
+	#prizes{
+		margin-bottom: 10px;
 	}
 
 	.life{
 		float:left;
 		margin:10px 10px 10px 30px;
 	}
+
