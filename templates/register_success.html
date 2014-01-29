@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+	<link rel="stylesheet" type="text/css" href="{% static "assets/css/registration.css" %}">
+{% endblock %}
 
 {% block content %}
 	<h1>You're Signed Up</h1>

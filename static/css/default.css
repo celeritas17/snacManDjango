@@ -36,111 +36,24 @@ body{
 	border-top-right-radius:2px;
 }
 
-.cell{
-	width: 125px;
-	height: 125px;
-	background-color: black;
-	border: 1px dotted blue;
-	float:left;
-	text-align: center;
-	border-radius: 2px;
-	font-family: "Century Gothic", Arial, "Courier New", Sans-Serif;
-	}
+a, a:visited, a:active{
+	text-decoration:none;
+	color: #111;
+}
 
-	.puzzle{
-		background-color: #5dfc0a;
-		color:#111;
-		margin:5px 10px 5px 5px;
-		width:150px;
-		height:75px;
-		border-radius:10px;
-		float:left;
-		padding:5px;
-		border-style:outset;
-		border-color:#444;
-		font-family: "Century Gothic", Arial, "Courier New", Sans-Serif;
-		position:relative;
-	}
+img{
+	width:50px;
+	height:50px;
+	margin-top:15px;
+}
 
-	a, a:visited, a:active{
-		text-decoration:none;
-		color: #111;
-	}
+div.muncher > img{
+	width:75px;
+	height:75px;
+	float: left;
+}
 
-	.more{
-		background-color: #08A2DE;
-		margin:auto;
-		float:left;
-		margin:5px;
-	}
-
-	small.more{
-		background-color: #08A2DE;
-		margin:auto;
-		float:left;
-	}
-
-	small.category{
-		color:blue;
-		position:absolute;
-		bottom:0;
-		float:right;
-	}
-
-	img{
-		width:50px;
-		height:50px;
-		margin-top:15px;
-	}
-
-	div.muncher > img{
-		width:75px;
-		height:75px;
-		float: left;
-	}
-
-	.buttons{
-		margin:150px auto 100px auto;
-		width:330px;
-		height:300px;
-	}
-
-	div.buttons > div{
-		width:100px;
-		height:100px;
-		background-color:#5dfc0a;
-		border-style:outset;
-		border-color: #444;
-		border-radius:10px;
-		color:#111;
-	}
-
-	#register{
-		float:left;
-		margin-right:10px;
-	}
-	
-	#play{
-		float:left;
-		margin-left:5px;
-	}
-
-	#login{
-		float:right;
-	}
-
-	.login{
-		margin-top:50px;
-	}
-
-	.snacking{
-		margin-top:100px;
-		font-size:120%;
-	}
-
-	a.snacking{
-		color:blue;
-		margin:0px;
-	}
-
+.login{
+	margin-top:50px;
+}
 

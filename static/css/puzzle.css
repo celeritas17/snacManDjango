@@ -1,3 +1,14 @@
+.cell{
+  width: 125px;
+  height: 125px;
+  background-color: black;
+  border: 1px dotted blue;
+  float:left;
+  text-align: center;
+  border-radius: 2px;
+  font-family: "Century Gothic", Arial, "Courier New", Sans-Serif;
+}
+
 #progress{
 		height:125px;
 		width:100px;

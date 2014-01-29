@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block styles %}
+	<link rel="stylesheet" type="text/css" href="{% static "assets/css/puzzles.css" %}">
+{% endblock %}
+
 {% block content %}
 	<h1><em>Start Snacking!</em></h1>
 	{% for puzzle in puzzles %}
