@@ -39,6 +39,7 @@ $(function(){
 			$('#num_to_win').html((num_correct - munched_correct) + " to Win");
 			if (winning()){
 				clearInterval(clock);
+				clearInterval(bad_moves);
 				victory();	
 			}
 		}
