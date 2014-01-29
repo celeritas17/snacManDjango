@@ -10,19 +10,23 @@
 {% endblock %}
 
 {% block content %}
+	{% csrf_token %}
 	<input type="hidden" value="{{bad_guy_id}}" id="bad_guy_id" />
 	<input type="hidden" value="{{cell_id}}" id="cell_id" />
 	<input type="hidden" value="{{row_size}}" id="row_size" />
 	<input type="hidden" value="{{col_size}}" id="col_size" />
 	<input type="hidden" value="{{puzzle.right_answers}}" id="right_answers" />
 	<input type="hidden" value="{{puzzle.wrong_answers}}" id="wrong_answers" />
+	<input type="hidden" value="{{puzzle.id}}" id="puzzle_id" />
 
+	<div id="content">
 	{% for answer in answers %}
 		<div class="cell"><span id="answer{{forloop.counter0}}">{{answer}}</span><br />
 			<img class="muncher" id={{forloop.counter0}} style="display:none;" src="{% static "assets/img/eat1.png" %}" />
 			<img class="bad_guy" id="{{forloop.counter0}}bad" style="display:none;" src="{% static "assets/img/ufo.jpg" %}" />
 		</div>
 	{% endfor %}
+	</div>	
 {% endblock %}
 
 {% block scoreboard %}	

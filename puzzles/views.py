@@ -1,8 +1,9 @@
 from django.shortcuts import render, render_to_response
-from puzzles.models import PuzzleCategory, Puzzle
+from puzzles.models import PuzzleCategory, Puzzle, PuzzleAttempt
 from random import shuffle
 from django.core.context_processors import csrf
 from django.http import HttpResponseRedirect
+from django.utils.timezone import now
 
 def puzzle(request, puzzle_id):
 	p = Puzzle.objects.get(id=puzzle_id)
@@ -16,6 +17,7 @@ def puzzle(request, puzzle_id):
 						 'bad_guy_id': 15, # starting cell for bad buy
 						 'num_correct': 8, # number of correct answers on the board
 	}
+	context.update(csrf(request))
 	return render_to_response('puzzle.html', context)
 
 def puzzles(request):
@@ -24,8 +26,12 @@ def puzzles(request):
 
 	return render_to_response('puzzles.html', context)
 
-
-
+def victory(request):
+	user = request.user
+	puzzle = Puzzle.objects.get(pk=request.POST['puzzle_id'])
+	pa = PuzzleAttempt(puzzle=puzzle, success=True, attempt_date=now(), user=user)
+	pa.save()
+	return render_to_response("victory.html", {})
 
 
 

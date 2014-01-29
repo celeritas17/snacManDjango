@@ -7,6 +7,7 @@ $(function(){
 	var col_size = parseInt($('#col_size').val());
 	var right_answers = $('#right_answers').val().split(' ');
 	var wrong_answers = $('#wrong_answers').val().split(' ');
+	var puzzle_id = parseInt($('#puzzle_id').val());
 	/////////////////
 
 	var time_height = parseInt($('#time_bar').css('height')); 
@@ -29,14 +30,39 @@ $(function(){
 	});
 
 	// Check if answer in the column is a key in the corrects object;
-	// if it is, change progress bar and update num_to_win div.
+	// if it is, change progress bar, update num_to_win div, and check for victory.
 	var check_answer = function(cell){
 		if ($('#answer' + cell).html() in corrects){
 			munched_correct++;
 			var height = parseInt($('#progress_bar').css('height'));
 			$('#progress_bar').css('height', (height + 20) + "px");
 			$('#num_to_win').html((num_correct - munched_correct) + " to Win");
+			if (winning()){
+				victory();	
+			}
 		}
+	};
+
+	// Check if user found all correct answers.
+	var winning = function(){
+		return (munched_correct === num_correct);
+	};
+
+	var victory = function(){
+		$.ajax({
+			type: "POST",
+			url: "/puzzles/victory/",
+			data: {
+				"puzzle_id": puzzle_id,
+				"csrfmiddlewaretoken": $("input[name=csrfmiddlewaretoken]").val()
+			},
+			success: blue_screen_of_victory,
+			dataType: 'html'
+		});
+	};
+
+	var blue_screen_of_victory = function(data, textStatus, jqXHR){
+		$('#content').html(data);
 	};
 
 	// munch (chewing) animation function
