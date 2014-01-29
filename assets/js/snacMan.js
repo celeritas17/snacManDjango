@@ -38,6 +38,7 @@ $(function(){
 			$('#progress_bar').css('height', (height + 20) + "px");
 			$('#num_to_win').html((num_correct - munched_correct) + " to Win");
 			if (winning()){
+				clearInterval(clock);
 				victory();	
 			}
 		}
@@ -259,6 +260,6 @@ $(function(){
 		}, clock_rate);
 	};
 
-	tic_tock(160, 2250, "time_bar");
+	var clock = tic_tock(160, 2250, "time_bar");
 
 });
