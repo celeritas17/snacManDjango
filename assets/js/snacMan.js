@@ -50,6 +50,7 @@ $(function(){
 		return (munched_correct === num_correct);
 	};
 
+	// Send ajax request to get victory screen
 	var victory = function(){
 		$.ajax({
 			type: "POST",
@@ -63,6 +64,7 @@ $(function(){
 		});
 	};
 
+	// Show victory screen on board
 	var blue_screen_of_victory = function(data, textStatus, jqXHR){
 		$('#content').html(data);
 	};
