@@ -9,35 +9,44 @@
   font-family: "Century Gothic", Arial, "Courier New", Sans-Serif;
 }
 
+.progress{
+	float:left;
+}
+
+.time{
+	float:right;
+}
+
 #progress{
 		height:125px;
 		width:100px;
 		position:relative;
-		float:left;
 	}
 	
-#progress_bar, #lack_of_progress_bar{
-	float:left;
+#progress_bar, #lack_of_progress_bar, #time_bar, #lack_of_time_bar{
 	width:40px;
 	margin: 0px 5px 20px 17px;
 	border-radius: 2px;
 	position:absolute;
 	bottom:0;
 	border:1px solid gray;
+	height: 160px;
 }
 
-#lack_of_progress_bar{
+#lack_of_progress_bar, #lack_of_time_bar{
 	background-color: red;
-	height:160px;
 }
 
-#progress_bar{
-	height:0px;
+#progress_bar, #time_bar{
 	z-index: 1;
 	background-color:#5dfc0a;
 }
 
-#num_to_win{
+#progress_bar{
+	height:0px;
+}
+
+#num_to_win, #time_left{
 	color:#111;
 	height:17px;
 	width:75px;
@@ -48,6 +57,13 @@
 	position:absolute;
 	bottom:0;
 }
+
+#time{
+		height:65px;
+		width:77px;
+		position:relative;
+		float:right;
+	}
 
 .nav_button, .munch_button{
 	float:left;

@@ -28,10 +28,10 @@
 {% block scoreboard %}	
 		<h2><em>{{puzzle.title}}</em></h2>
 		
-		<div id="progress">
-			<div id="progress_bar"></div>
-			<div id="lack_of_progress_bar"></div>
-			<div id="num_to_win">{{num_correct}} to Win</div>
+		<div id="progress" class="progress">
+			<div id="progress_bar" class="progress"></div>
+			<div id="lack_of_progress_bar" class="progress"></div>
+			<div id="num_to_win" class="progress">{{num_correct}} to Win</div>
 		</div>
 		<div id="lives">
 			<img class="life" id="life1" src="{% static "assets/img/eat1.png" %}" />
@@ -43,6 +43,10 @@
 			<img class="life" id="prize3" src="{% static "assets/img/circle.svg" %}" />
 			<img class="life" id="prize3" src="{% static "assets/img/circle.svg" %}" />
 		</div>
-		
+		<div id="time" class="time">
+			<div id="time_bar" class="time"></div>
+			<div id="lack_of_time_bar" class="time"></div>
+			<div id="time_left" class="time">Time</div>
+		</div>
 {% endblock %}
 

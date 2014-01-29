@@ -9,6 +9,7 @@ $(function(){
 	var wrong_answers = $('#wrong_answers').val().split(' ');
 	/////////////////
 
+	var time_height = parseInt($('#time_bar').css('height')); 
 	var munched_correct = 0;
 	var num_lives = 3;
 	var dieing = false;
@@ -223,5 +224,15 @@ $(function(){
 		}
 	});
 	/////////////////
+
+	// function for the 'hour-glass' animation effect
+	var tic_tock = function(time_height, clock_rate, clock_id){
+		return setInterval(function(){
+			var current_height = parseInt($('#' + clock_id).css('height'));
+			$('#' + clock_id).css('height', (current_height - 5) + 'px');
+		}, clock_rate);
+	};
+
+	tic_tock(160, 2250, "time_bar");
 
 });
