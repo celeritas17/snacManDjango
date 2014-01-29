@@ -16,15 +16,25 @@
 		float:left;
 	}
 	
-#progress_bar{
+#progress_bar, #lack_of_progress_bar{
 	float:left;
 	width:40px;
-	height:0px;
-	background-color:#5dfc0a;
 	margin: 0px 5px 20px 17px;
 	border-radius: 2px;
 	position:absolute;
 	bottom:0;
+	border:1px solid gray;
+}
+
+#lack_of_progress_bar{
+	background-color: red;
+	height:160px;
+}
+
+#progress_bar{
+	height:0px;
+	z-index: 1;
+	background-color:#5dfc0a;
 }
 
 #num_to_win{
