@@ -18,15 +18,19 @@
 	<input type="hidden" value="{{puzzle.right_answers}}" id="right_answers" />
 	<input type="hidden" value="{{puzzle.wrong_answers}}" id="wrong_answers" />
 	<input type="hidden" value="{{puzzle.id}}" id="puzzle_id" />
-	<input type="hidden" value="{{prize1}}" id="prize1" />
-	<input type="hidden" value="{{prize2}}" id="prize2" />
-	<input type="hidden" value="{{prize3}}" id="prize3" />
+	<input type="hidden" value="{{prizes}}" id="prizes" />
+	<input type="hidden" value="{{prize1}}" id="prize1_index" />
+	<input type="hidden" value="{{prize2}}" id="prize2_index" />
+	<input type="hidden" value="{{prize3}}" id="prize3_index" />
 
 	<div id="content">
 	{% for answer in answers %}
 		<div class="cell"><span id="answer{{forloop.counter0}}">{{answer}}</span><br />
 			<img class="muncher" id={{forloop.counter0}} style="display:none;" src="{% static "assets/img/eat1.png" %}" />
 			<img class="bad_guy" id="{{forloop.counter0}}bad" style="display:none;" src="{% static "assets/img/ufo.jpg" %}" />
+			{% if forloop.counter0 in prizes %}
+				<img id="prize{{forloop.counter0}}" style="display:none;" src="{% static "assets/img/circle.svg" %}" />
+			{% endif %}
 		</div>
 	{% endfor %}
 	</div>	
@@ -46,9 +50,9 @@
 			<img class="life" id="life3" src="{% static "assets/img/eat1.png" %}" />
 		</div>
 		<div id="prizes">
-			<img class="life" id="prize3" src="{% static "assets/img/circle.svg" %}" />
-			<img class="life" id="prize3" src="{% static "assets/img/circle.svg" %}" />
-			<img class="life" id="prize3" src="{% static "assets/img/circle.svg" %}" />
+			<img class="life" id="prize_click1" src="{% static "assets/img/circle.svg" %}" />
+			<img class="life" id="prize_click2" src="{% static "assets/img/circle.svg" %}" />
+			<img class="life" id="prize_click3" src="{% static "assets/img/circle.svg" %}" />
 		</div>
 		<div id="time" class="time">
 			<div id="time_bar" class="time"></div>

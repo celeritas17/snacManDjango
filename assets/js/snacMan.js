@@ -8,6 +8,9 @@ $(function(){
 	var right_answers = $('#right_answers').val().split(' ');
 	var wrong_answers = $('#wrong_answers').val().split(' ');
 	var puzzle_id = parseInt($('#puzzle_id').val());
+	var prize1_index = parseInt($('#prize1_index').val());
+	var prize2_index = parseInt($('#prize2_index').val());
+	var prize3_index = parseInt($('#prize3_index').val());
 	/////////////////
 
 	var time_height = parseInt($('#time_bar').css('height')); 
@@ -268,5 +271,16 @@ $(function(){
 	};
 
 	var clock = tic_tock(160, 2250, "time_bar");
+
+	/* Click handlers and related functions for prizes */
+	/////////////////
+	var show_prize = function(prize_index){
+		$('#prize' + prize_index).toggle();
+	};
+
+	$('#prize_click1').click(function(){show_prize(prize1_index)});
+	$('#prize_click2').click(function(){show_prize(prize2_index)});
+	$('#prize_click3').click(function(){show_prize(prize3_index)});
+	/////////////////
 
 });
