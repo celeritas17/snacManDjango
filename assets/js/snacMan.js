@@ -13,6 +13,7 @@ $(function(){
 	var time_height = parseInt($('#time_bar').css('height')); 
 	var munched_correct = 0;
 	var num_lives = 3;
+	var munching = false;
 	var dieing = false;
 	var num_correct = right_answers.length;
 	var corrects = {};
@@ -71,6 +72,8 @@ $(function(){
 
 	// munch (chewing) animation function
 	var munch = function(){
+		munching = true;
+		setTimeout(function(){munching=false;}, 210);
 		var margin_top = parseInt($('#' + cell).css('margin-top'));
 
 		var chew_timeout = function(i, j){
@@ -245,7 +248,8 @@ $(function(){
 					break;
 				case 13:
 					check_answer(cell); // Needs to be executed before munch
-					munch();
+					if (!munching)
+						munch();
 					break;
 				default:
 					break;
