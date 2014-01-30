@@ -4,18 +4,30 @@ from random import shuffle
 from django.core.context_processors import csrf
 from django.http import HttpResponseRedirect
 from django.utils.timezone import now
+import random 
+
+def get_randoms
 
 def puzzle(request, puzzle_id):
+	row_size = 4
+	col_size = 4
+
 	p = Puzzle.objects.get(id=puzzle_id)
 	answers = [ans.replace('_', ' ') for ans in p.right_answers.split() + p.wrong_answers.split()]
 	shuffle(answers)
+
+	prize1, prize2, prize3 = random.sample(xrange(0, row_size*col_size - 1), 3) # ids for the hidden prizes
+
 	context = {'puzzle': p, 
 						 'answers': answers,
-						 'row_size': 4,
-						 'col_size': 4,
+						 'row_size': row_size,
+						 'col_size': col_size,
 						 'cell_id': 0, # starting cell for muncher; cells range from 0 to row_size*col_size
 						 'bad_guy_id': 15, # starting cell for bad buy
 						 'num_correct': 8, # number of correct answers on the board
+						 'prize1': prize1,
+						 'prize2': prize2,
+						 'prize3': prize3,
 	}
 	context.update(csrf(request))
 	return render_to_response('puzzle.html', context)

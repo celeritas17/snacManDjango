@@ -34,7 +34,6 @@ def register(request):
 
 	context = {}
 	context.update(csrf(request))
-	#print context
 	context['form'] = SnacManRegistrationForm()
 
 	return render_to_response('register.html', context)
