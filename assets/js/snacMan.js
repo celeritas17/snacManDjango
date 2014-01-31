@@ -8,11 +8,13 @@ $(function(){
 	var right_answers = $('#right_answers').val().split(' ');
 	var wrong_answers = $('#wrong_answers').val().split(' ');
 	var puzzle_id = parseInt($('#puzzle_id').val());
-	var prize1_index = parseInt($('#prize1_index').val());
-	var prize2_index = parseInt($('#prize2_index').val());
-	var prize3_index = parseInt($('#prize3_index').val());
+	prize_indices = [];
+	for (var i = 0; i < 3; i++){
+		prize_indices[i] = parseInt($('#prize' + (i + 1) + '_index').val());
+	}
 	/////////////////
 
+	var active_prizes = [false, false, false];
 	var time_height = parseInt($('#time_bar').css('height')); 
 	var munched_correct = 0;
 	var num_lives = 3;
@@ -229,6 +231,39 @@ $(function(){
 	$('#munch').click(munch);
 	/////////////////
 
+	/* Click handlers and related functions for prizes */
+	/////////////////
+	var prize_munch = function(index){
+				munch();
+				$('#prize' + prize_indices[index]).toggle();
+	};
+
+	var prize_check = function(){
+		for (var i = 0; i < prize_indices.length; i++){
+			if (cell == prize_indices[i] && active_prizes[i] === true){
+				prize_munch(i);
+				active_prizes[i] = -1;
+			}
+		}
+	};
+	
+	var add_prize_clicks = function(){
+		var add_click_function = function(i){
+			$('#prize_click' + (i + 1)).click(function(){
+				if (active_prizes[i] === false){
+					$('#prize' + prize_indices[i]).toggle();
+					active_prizes[i] = true;
+					prize_check();
+				}
+			});
+		};
+
+		for (var i = 0; i < prize_indices.length; i++){
+			add_click_function(i);
+		}
+	}();
+	/////////////////
+
 	/* Event handlers for keypresses: */
 	/////////////////
 	$(document).on('keydown', function(event){
@@ -258,6 +293,7 @@ $(function(){
 					break;
 			}
 			collision_check();
+			prize_check();
 		}
 	});
 	/////////////////
@@ -270,17 +306,6 @@ $(function(){
 		}, clock_rate);
 	};
 
-	var clock = tic_tock(160, 2250, "time_bar");
-
-	/* Click handlers and related functions for prizes */
-	/////////////////
-	var show_prize = function(prize_index){
-		$('#prize' + prize_index).toggle();
-	};
-
-	$('#prize_click1').click(function(){show_prize(prize1_index)});
-	$('#prize_click2').click(function(){show_prize(prize2_index)});
-	$('#prize_click3').click(function(){show_prize(prize3_index)});
-	/////////////////
+	var clock = tic_tock(160, 2250, "time_bar"); // start the 'hour-glass' animation.
 
 });
