@@ -37,6 +37,7 @@ class Puzzle(models.Model):
 
 class PuzzleAttempt(models.Model):
 	puzzle = models.ForeignKey(Puzzle)
+	score = models.IntegerField(default=0)
 	success = models.BooleanField(default=False)
 	attempt_date = models.DateTimeField('date attempted')
 	user = models.ForeignKey(User)
