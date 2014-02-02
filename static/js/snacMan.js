@@ -233,6 +233,23 @@ $(function(){
 
 	/* Click handlers and related functions for prizes */
 	/////////////////
+
+	var prize_action1 = function(){
+		var current_height = parseInt($('#time_bar').css('height'));
+		var new_height = (current_height < time_height/2) ? current_height + time_height/2 : time_height;
+		$('#time_bar').css('height', new_height);
+	};
+
+	var prize_action2 = function(){
+		alert("Prize2");
+	};
+
+	var prize_action3 = function(){
+		alert("Prize3");
+	};
+
+	var prize_actions = [prize_action1, prize_action2, prize_action3];
+
 	var prize_munch = function(index){
 				munch();
 				$('#prize' + prize_indices[index]).toggle();
@@ -243,6 +260,7 @@ $(function(){
 			if (cell == prize_indices[i] && active_prizes[i] === true){
 				prize_munch(i);
 				active_prizes[i] = -1;
+				prize_actions[i]();
 			}
 		}
 	};
