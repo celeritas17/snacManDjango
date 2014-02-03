@@ -69,7 +69,6 @@ $(function(){
 	var endgame = function(winning){
 		clearInterval(clock);
 		clearInterval(bad_moves);
-		console.log(winning);
 		$.ajax({
 			type: "POST",
 			url: "/puzzles/endgame/",
