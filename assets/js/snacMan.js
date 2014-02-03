@@ -7,6 +7,9 @@ $(function(){
 	var col_size = parseInt($('#col_size').val());
 	var right_answers = $('#right_answers').val().split(' ');
 	var wrong_answers = $('#wrong_answers').val().split(' ');
+	for (var i = 0; i < wrong_answers.length; i++){
+		wrong_answers[i] = wrong_answers[i].split('_').join(' ');
+	}
 	var puzzle_id = parseInt($('#puzzle_id').val());
 	prize_indices = [];
 	for (var i = 0; i < 3; i++){
@@ -76,7 +79,7 @@ $(function(){
 	};
 
 	// munch (chewing) animation function
-	var munch = function(){
+	var munch = function(thing){
 		munching = true;
 		setTimeout(function(){munching=false;}, 210);
 		var margin_top = parseInt($('#' + cell).css('margin-top'));
@@ -97,7 +100,7 @@ $(function(){
 				i--;
 			chew_timeout(i, j);
 		}
-		$('#answer' + cell).html('');
+		if (thing != "prize") $('#answer' + cell).html('');
 	};
 	
 	// 'Die' flashing animation function
@@ -241,7 +244,7 @@ $(function(){
 	};
 
 	var prize_action2 = function(){
-		alert("Prize2");
+		$('span:contains("' + wrong_answers[Math.floor(Math.random()*wrong_answers.length)] + '")').html('');
 	};
 
 	var prize_action3 = function(){
@@ -251,7 +254,7 @@ $(function(){
 	var prize_actions = [prize_action1, prize_action2, prize_action3];
 
 	var prize_munch = function(index){
-				munch();
+				munch("prize");
 				$('#prize' + prize_indices[index]).toggle();
 	};
 
