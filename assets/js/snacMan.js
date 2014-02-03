@@ -46,6 +46,7 @@ $(function(){
 	// if it is, change progress bar, update num_to_win div, and check for victory.
 	var check_answer = function(cell){
 		if ($('#answer' + cell).html() in corrects){
+			$('#answer' + cell).html('');	
 			munched_correct++;
 			var height = parseInt($('#progress_bar').css('height'));
 			$('#progress_bar').css('height', (height + 20) + "px");
@@ -90,7 +91,7 @@ $(function(){
 	};
 
 	// munch (chewing) animation function
-	var munch = function(thing){
+	var munch = function(){
 		munching = true;
 		setTimeout(function(){munching=false;}, 210);
 		var margin_top = parseInt($('#' + cell).css('margin-top'));
@@ -111,7 +112,6 @@ $(function(){
 				i--;
 			chew_timeout(i, j);
 		}
-		if (thing != "prize") $('#answer' + cell).html('');
 	};
 	
 	// 'Die' flashing animation function
@@ -290,7 +290,7 @@ $(function(){
 	var prize_actions = [prize_action1, prize_action2, prize_action3];
 
 	var prize_munch = function(index){
-				munch("prize");
+				munch();
 				$('#prize' + prize_indices[index]).toggle();
 	};
 
