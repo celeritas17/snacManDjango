@@ -1,0 +1,13 @@
+{% load static %}
+
+{% block styles %}
+	<link rel="stylesheet" type="text/css" href="{% static "assets/css/endgame.css" %}">
+{% endblock %}
+
+{% if success == "victory" %}
+	<h1>You Win!</h1>
+	<p>Score: {{score}}</p>
+{% else %}
+	<h1>You Lose!</h1>
+	<p>Better luck next time</p>
+{% endif %}

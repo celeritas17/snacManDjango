@@ -5,6 +5,7 @@ $(function(){
 	var bad_cell = $('#bad_guy_id').val(); // id for bad guy on the board.
 	var row_size = parseInt($('#row_size').val()); 
 	var col_size = parseInt($('#col_size').val());
+	var attempt_id = parseInt($('#attempt_id').val());
 	var right_answers = $('#right_answers').val().split(' ');
 	var wrong_answers = $('#wrong_answers').val().split(' ');
 	for (var i = 0; i < wrong_answers.length; i++){
@@ -17,6 +18,7 @@ $(function(){
 	}
 	/////////////////
 
+	var score = 1; // default score
 	var bad_guy_vulnerable = false;
 	var bad_guy_dead = false;
 	var active_prizes = [false, false, false];
@@ -49,10 +51,12 @@ $(function(){
 			$('#progress_bar').css('height', (height + 20) + "px");
 			$('#num_to_win').html((num_correct - munched_correct) + " to Win");
 			if (winning()){
-				clearInterval(clock);
-				clearInterval(bad_moves);
-				victory();	
+				endgame("victory");
 			}
+		}
+		else{
+			take_life();
+			die();
 		}
 	};
 
@@ -61,22 +65,28 @@ $(function(){
 		return (munched_correct === num_correct);
 	};
 
-	// Send ajax request to get victory screen
-	var victory = function(){
+	// Send ajax request to get game over screen
+	var endgame = function(winning){
+		clearInterval(clock);
+		clearInterval(bad_moves);
+		console.log(winning);
 		$.ajax({
 			type: "POST",
-			url: "/puzzles/victory/",
+			url: "/puzzles/endgame/",
 			data: {
 				"puzzle_id": puzzle_id,
+				"winning": winning,
+				"attempt_id": attempt_id,
+				"score": score,
 				"csrfmiddlewaretoken": $("input[name=csrfmiddlewaretoken]").val()
 			},
-			success: blue_screen_of_victory,
-			dataType: 'html'
+			success: game_over,
+			dataType: 'html',
 		});
 	};
 
-	// Show victory screen on board
-	var blue_screen_of_victory = function(data, textStatus, jqXHR){
+	// Show game over screen on board
+	var game_over = function(data, textStatus, jqXHR){
 		$('#content').html(data);
 	};
 
@@ -132,8 +142,11 @@ $(function(){
 		}
 	};
  
-	// Decrement num_lives and toggle one of the lives images
+	// Decrement num_lives and toggle one of the lives images; check if game over
 	var take_life = function(){
+		if (num_lives < 2){
+			endgame("Lost");
+		}
 		$('#life' + num_lives--).toggle();
 	};
 
@@ -346,6 +359,8 @@ $(function(){
 	var tic_tock = function(time_height, clock_rate, clock_id){
 		return setInterval(function(){
 			var current_height = parseInt($('#' + clock_id).css('height'));
+			if (current_height < 5)
+				endgame("Lost");
 			$('#' + clock_id).css('height', (current_height - 5) + 'px');
 		}, clock_rate);
 	};

@@ -11,9 +11,11 @@ def puzzle(request, puzzle_id):
 	col_size = 4
 
 	p = Puzzle.objects.get(id=puzzle_id)
+	user = request.user
 	answers = [ans.replace('_', ' ') for ans in p.right_answers.split() + p.wrong_answers.split()]
 	shuffle(answers)
-
+	pa = PuzzleAttempt(puzzle=p, attempt_date=now(), user=user)
+	pa.save()
 	prizes = random.sample(xrange(0, row_size*col_size - 1), 3) # ids for the hidden prizes
 	prize1, prize2, prize3 = prizes
 
@@ -28,6 +30,7 @@ def puzzle(request, puzzle_id):
 						 'prize1': prize1,
 						 'prize2': prize2,
 						 'prize3': prize3,
+						 'attempt_id': pa.id,
 	}
 	context.update(csrf(request))
 	return render_to_response('puzzle.html', context)
@@ -38,12 +41,19 @@ def puzzles(request):
 
 	return render_to_response('puzzles.html', context)
 
-def victory(request):
-	user = request.user
-	puzzle = Puzzle.objects.get(pk=request.POST['puzzle_id'])
-	pa = PuzzleAttempt(puzzle=puzzle, success=True, attempt_date=now(), user=user)
-	pa.save()
-	return render_to_response("victory.html", {})
+def endgame(request):
+	attempt_id = request.POST['attempt_id']
+	success = request.POST['winning']
+	score = request.POST['score']
+	context = {'success':success}
+	if success == 'victory':
+		pa = PuzzleAttempt.objects.get(pk=attempt_id)
+		pa.success = True
+		pa.score = score
+		pa.save()
+		context['score'] = score
+
+	return render_to_response('game_over.html', context)
 
 
 
