@@ -17,6 +17,8 @@ $(function(){
 	}
 	/////////////////
 
+	var bad_guy_vulnerable = false;
+	var bad_guy_dead = false;
 	var active_prizes = [false, false, false];
 	var time_height = parseInt($('#time_bar').css('height')); 
 	var munched_correct = 0;
@@ -211,18 +213,26 @@ $(function(){
 	};
 
 	var collision_check = function(){
-		if (collision() && !dieing){
+		if (collision() && !dieing && !bad_guy_vulnerable){
 			take_life();
 			die();
 		}
+		if (collision() && bad_guy_vulnerable && !bad_guy_dead){
+			munch('prize');
+			kill_bad_guy();
+		}
 	};
 
-	var bad_moves = setInterval(function(){
-		if (!dieing){
-			move_bad_guy();
-			collision_check();
-		}
-	}, 1000);
+	var bad_moving = function(){
+		return setInterval(function(){
+			if (!dieing){
+				move_bad_guy();
+				collision_check();
+			}
+		}, 1000);
+	};
+
+	var bad_moves = bad_moving();
 	/////////////////
 
 	/* Event Handlers for muncher navigation buttons: */
@@ -248,7 +258,21 @@ $(function(){
 	};
 
 	var prize_action3 = function(){
-		alert("Prize3");
+		bad_guy_vulnerable = true;
+		$('img.bad_guy').attr('src', '/static/assets/img/ufo_blue.jpg');
+		setTimeout(function(){
+			$('img.bad_guy').attr('src', '/static/assets/img/ufo.jpg');
+			if (bad_guy_dead) 
+				$('#' + bad_cell + 'bad').toggle();
+			bad_guy_vulnerable = false;
+			clearInterval(bad_moves), bad_moving(); 
+		}, 10000);
+	};
+
+	var kill_bad_guy = function(){
+		bad_guy_dead = true;
+		$('#' + bad_cell + 'bad').toggle();
+		clearInterval(bad_moves);
 	};
 
 	var prize_actions = [prize_action1, prize_action2, prize_action3];
@@ -278,7 +302,6 @@ $(function(){
 				}
 			});
 		};
-
 		for (var i = 0; i < prize_indices.length; i++){
 			add_click_function(i);
 		}
