@@ -46,10 +46,11 @@ def puzzles(request):
 	return render_to_response('puzzles.html', context)
 
 def endgame(request):
+	puzzle_id = request.POST['puzzle_id']
 	attempt_id = request.POST['attempt_id']
 	success = request.POST['winning']
 	score = request.POST['score']
-	context = {'success':success}
+	context = {'success':success, 'puzzle_id': puzzle_id}
 	if success == 'victory':
 		if int(attempt_id) > 0:
 			pa = PuzzleAttempt.objects.get(pk=attempt_id)

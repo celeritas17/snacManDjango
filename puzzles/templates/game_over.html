@@ -8,8 +8,14 @@
 {% if success == "victory" %}
 	<h1>You Win!</h1>
 	<p>Score: {{score}}</p>
+	<div class="more_puzzles">
+		<a href="{% url 'puzzles.views.puzzle' puzzle_id|add:'1' %}">Next Puzzle!</a>
+	</div> 
 {% else %}
 	<h1>You Lose!</h1>
 	<p>Better luck next time</p>
+	<div class="more_puzzles">
+		<a href="{% url 'puzzles.views.puzzles' %}">Back to Puzzles</a>
+	</div> 
 {% endif %}
 </div>

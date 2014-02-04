@@ -79,6 +79,7 @@ $(function(){
 				"winning": winning,
 				"attempt_id": attempt_id,
 				"score": score,
+				"puzzle_id": puzzle_id,
 				"csrfmiddlewaretoken": $("input[name=csrfmiddlewaretoken]").val()
 			},
 			success: game_over,
