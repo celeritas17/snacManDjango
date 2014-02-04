@@ -34,6 +34,7 @@ body{
 	border-radius: 20px;
 	border-top-left-radius:2px;
 	border-top-right-radius:2px;
+	position:relative;
 }
 
 a, a:visited, a:active{
@@ -55,5 +56,17 @@ div.muncher > img{
 
 .login{
 	margin-top:60px;
+}
+
+.logout{
+	color:#111;
+	height:17px;
+	width:75px;
+	border-radius:10px;
+	background-color: #5dfc0a;
+	font-family: Arial, Monaco, monospace;
+	position:absolute;
+	bottom:0; 
+	float:right;
 }
 

@@ -5,12 +5,17 @@ from django.http import HttpResponseRedirect, HttpResponse
 from forms import SnacManRegistrationForm
 
 def main(request):
-	return render_to_response('main.html')
+	user = request.user
+	return render_to_response('main.html', {'user': user})
 
 def login(request):
 	context = {}	
 	context.update(csrf(request))
 	return render_to_response('login.html', context)
+
+def logout(request):
+	auth.logout(request)
+	return render_to_response('main.html', {'logout': True})
 
 def auth_view(request):
 	username = request.POST.get('username', '')

@@ -23,6 +23,12 @@
 			{% block scoreboard %}
 				<h1><em>SnacMan</em></h1>
 				<div class="muncher"><img src="{% static "assets/img/eat1.png" %}" /></div>
+				{% if user.is_authenticated %}
+					<div class="logout">
+						<a href="{% url 'snacMan.views.logout' %}">Logout</a>
+					</div>
+				{% endif %}
+
 			{% endblock %}
 
 		</div>

@@ -15,4 +15,5 @@ urlpatterns = patterns('snacMan.views',
 	url(r'^register/$', 'register'),
 	url(r'^register_success/$', 'register_success'),
 	url(r'^register_fail/$', 'register_fail'),
+  url(r'^logout/$', 'logout'),
 )
