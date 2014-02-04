@@ -118,13 +118,12 @@ $(function(){
 	var die = function(){
 		dieing = true;
 		toggle_picture("cell", cell);
-		toggle_picture("bad_cell", bad_cell);
-		
-		// Reset positions for bad guy and good guy
-		cell = 0;
-		bad_cell = row_size*col_size - 1;
-		
-		toggle_picture("bad_cell", bad_cell);
+		cell = 0; // Reset position good guy
+		if (!bad_guy_dead){ // only reset bad guy if he's alive
+			toggle_picture("bad_cell", bad_cell);
+			bad_cell = row_size*col_size - 1;
+			toggle_picture("bad_cell", bad_cell);
+		}	
 		
 		var die_timeout = function(i){
 			setTimeout(function(){
@@ -220,6 +219,10 @@ $(function(){
 		moves[Math.floor(Math.random()*4)]("bad_cell", bad_cell);
 	};
 
+	var kill_bad_guy = function(){
+		bad_guy_dead = true;
+	};
+
 	var collision = function(){
 		return (cell == bad_cell)
 	};
@@ -277,6 +280,7 @@ $(function(){
 			if (bad_guy_dead) 
 				$('#' + bad_cell + 'bad').toggle();
 			bad_guy_vulnerable = false;
+			bad_guy_dead = false;
 			clearInterval(bad_moves), bad_moving(); 
 		}, 10000);
 	};
