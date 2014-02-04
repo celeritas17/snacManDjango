@@ -70,6 +70,7 @@ $(function(){
 	var endgame = function(winning){
 		clearInterval(clock);
 		clearInterval(bad_moves);
+		score = (parseInt($('#time_bar').css('height')))*100 + 500*num_lives;
 		$.ajax({
 			type: "POST",
 			url: "/puzzles/endgame/",
