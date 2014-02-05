@@ -12,5 +12,9 @@
 				<small class="category">{{puzzle.category.category_name}}</small>
 			</a>
 	{% endfor %}
-	<a href="#" class="puzzle more"><h4>More Puzzles &gt;&gt;</h4></a>
+	{% if puzzles_left > puzzles_on_page %}
+		<a href="{% url 'puzzles.views.puzzles' next_position %}" class="puzzle more"><h4>More Puzzles &gt;&gt;</h4></a>
+	{% else %}
+		<a href="{% url 'puzzles.views.puzzles' orig_position %}" class="puzzle more"><h4>&lt;&lt;Back to List</h4></a>
+	{% endif %}
 {% endblock %}

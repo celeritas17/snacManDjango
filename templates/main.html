@@ -12,7 +12,7 @@
 {% endif %}
 <div class="buttons">
 <div id="register"><h4><em><a href="{% url 'snacMan.views.register' %}">Register</a></em></h4></div>
-<div id="play"><h4><em><a href="{% url 'puzzles.views.puzzles' %}">Play</a></em></h4></div>
+<div id="play"><h4><em><a href="{% url 'puzzles.views.puzzles' 0 %}">Play</a></em></h4></div>
 <div id="login"><h4><em><a href="{% url 'snacMan.views.login' %}">Login</a></em></h4></div>
 </div>
 {% endblock %}

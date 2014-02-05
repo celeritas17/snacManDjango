@@ -38,10 +38,22 @@ def puzzle(request, puzzle_id):
 	context.update(csrf(request))
 	return render_to_response('puzzle.html', context)
 
-def puzzles(request):
+def puzzles(request, position):
 	user = request.user
 	puzzles = Puzzle.objects.all()
-	context = {'puzzles': Puzzle.objects.all()[0:14], 'user': user}
+	position = int(position)
+	puzzles_on_page = 14
+	puzzles_left = len(Puzzle.objects.all()) - position
+	next_position = position + puzzles_on_page
+	orig_position = 0
+	context = {'puzzles': Puzzle.objects.all()[position:position+next_position], 
+						 'user': user,
+						 'orig_position': 0,
+						 'position': position,
+						 'next_position': next_position,
+						 'puzzles_on_page': puzzles_on_page,
+						 'puzzles_left': puzzles_left,
+						 }
 
 	return render_to_response('puzzles.html', context)
 
@@ -50,7 +62,9 @@ def endgame(request):
 	attempt_id = request.POST['attempt_id']
 	success = request.POST['winning']
 	score = request.POST['score']
-	context = {'success':success, 'puzzle_id': puzzle_id}
+	context = {'success': success, 
+						 'puzzle_id': puzzle_id,
+						}
 	if success == 'victory':
 		if int(attempt_id) > 0:
 			pa = PuzzleAttempt.objects.get(pk=attempt_id)
