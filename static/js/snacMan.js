@@ -264,16 +264,19 @@ $(function(){
 	/* Click handlers and related functions for prizes */
 	/////////////////
 
+	// Add time to the 'hour glass'
 	var prize_action1 = function(){
 		var current_height = parseInt($('#time_bar').css('height'));
 		var new_height = (current_height < time_height/2) ? current_height + time_height/2 : time_height;
 		$('#time_bar').css('height', new_height);
 	};
 
+	// Remove one wrong answer from the board (chosen at random)
 	var prize_action2 = function(){
 		$('span:contains("' + wrong_answers[Math.floor(Math.random()*wrong_answers.length)] + '")').html('');
 	};
 
+	// Make the bad guy vulnerable for 10 seconds
 	var prize_action3 = function(){
 		bad_guy_vulnerable = true;
 		$('img.bad_guy').attr('src', '/static/assets/img/ufo_blue.jpg');
@@ -300,6 +303,8 @@ $(function(){
 				$('#prize' + prize_indices[index]).toggle();
 	};
 
+	// Check if muncher is on a cell with a prize;
+	// if yes, execute prize action.
 	var prize_check = function(){
 		for (var i = 0; i < prize_indices.length; i++){
 			if (cell == prize_indices[i] && active_prizes[i] === true){
